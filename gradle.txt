@@ -1,0 +1,16 @@
+
+tasks.eclipse.doFirst {
+    File prefs = file(".settings/org.eclipse.buildship.core.prefs")
+    if(!prefs.exists()){
+        prefs.append('''
+            connection.project.dir=
+            eclipse.preferences.version=1
+            '''.stripIndent())
+    }
+}
+
+
+%~d0
+cd %~p0
+cd ..\
+.\gradlew eclipse

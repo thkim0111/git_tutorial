@@ -14,3 +14,8 @@ tasks.eclipse.doFirst {
 cd %~p0
 cd ..\
 .\gradlew eclipse
+
+
+https://techracho.bpsinc.jp/baba/2009_12_08/727
+
+https://tortoisesvn.net/docs/release/TortoiseSVN_ja/tsvn-dug-ignore.html

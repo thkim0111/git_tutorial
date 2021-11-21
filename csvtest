@@ -1,0 +1,25 @@
+	public static void main(String[] args) throws IOException {
+
+		List<JacksonCsv> csvList = new ArrayList<JacksonCsv>();
+		JacksonCsv csv1 = new JacksonCsv();
+		csv1.id = 1;
+		csv1.name = "one";
+		csvList.add(csv1);
+		JacksonCsv csv2 = new JacksonCsv();
+		csv2.id = 2;
+		csv2.name = "one";
+		csvList.add(csv2);
+
+		CsvMapper mapper = new CsvMapper();
+        CsvSchema schema = mapper.schemaFor(JacksonCsv.class);
+
+        File tempFile = new File("C:/test/users.csv");
+        FileOutputStream tempFileOutputStream = new FileOutputStream(tempFile);
+        BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(tempFileOutputStream, 1024);
+        OutputStreamWriter writerOutputStream = new OutputStreamWriter(bufferedOutputStream, "UTF-8");
+
+        SequenceWriter writer = mapper.writer(schema).writeValues(writerOutputStream);
+        writer.write(Arrays.asList("ID_TEST4",""));
+        writer.writeAll(csvList);
+        writer.close();
+	}
